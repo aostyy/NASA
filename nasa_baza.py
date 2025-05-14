@@ -224,8 +224,10 @@ def main():
                     tiles = fetch_nasa_images(QUERY, current_page, db_conn)  # Poprzednia strona
                 elif event.key == pygame.K_r and not fullscreen:
                     search_input_screen()
+                    screen = pygame.display.set_mode(WINDOW_SIZE)  # Przywrócenie rozmiaru głównego okna
                     current_page = 1
-                    tiles = fetch_nasa_images(QUERY, current_page, db_conn)  # Nowe wyszukiwanie
+                    tiles = fetch_nasa_images(QUERY, current_page, db_conn)
+                    pygame.display.set_caption("Wyszukiwarka zdjęć NASA") # Ponowne wyszukiwanie
                 elif event.key == pygame.K_ESCAPE and fullscreen:
                     fullscreen = None  # Zamknięcie pełnego ekranu
                 elif event.key == pygame.K_c and not fullscreen:
